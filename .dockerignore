@@ -1,0 +1,10 @@
+target/
+uploads/
+*.log
+*.tmp
+*.md
+.git
+.gitignore
+Dockerfile
+mvnw.cmd
+hs_err_*.log
