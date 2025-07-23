@@ -42,6 +42,9 @@ COPY src/ /app/src/
 # Make mvnw executable and fix line endings
 RUN apt-get update && apt-get install -y dos2unix && dos2unix mvnw && chmod +x mvnw
 
+# Set default JWT secret (can be overridden at runtime)
+ENV JWT_SECRET=QwErTyUiOpAsDfGhJkLzXcVbNm123456
+
 # Build the project
 RUN ./mvnw clean package -DskipTests
 
