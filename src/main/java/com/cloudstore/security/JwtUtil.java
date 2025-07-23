@@ -19,6 +19,12 @@ public class JwtUtil {
         @Value("${jwt.secret}") String jwtSecret,
         @Value("${jwt.expiration}") long jwtExpirationMs
     ) {
+        // Provide a fallback default secret if injected secret is invalid
+        String defaultSecret = "QwErTyUiOpAsDfGhJkLzXcVbNm1234567890QWERTYUIOPASDFGHJKLZXCVBNM";
+        if (jwtSecret == null || jwtSecret.length() < 32) {
+            System.err.println("Warning: JWT secret is invalid or missing. Using default secret.");
+            jwtSecret = defaultSecret;
+        }
         this.jwtSecret = jwtSecret;
         this.jwtExpirationMs = jwtExpirationMs;
     }
