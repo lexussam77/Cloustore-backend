@@ -43,7 +43,7 @@ COPY src/ /app/src/
 RUN apt-get update && apt-get install -y dos2unix && dos2unix mvnw && chmod +x mvnw
 
 # Set default JWT secret (can be overridden at runtime)
-ENV JWT_SECRET=QwErTyUiOpAsDfGhJkLzXcVbNm123456
+ENV JWT_SECRET=QwErTyUiOpAsDfGhJkLzXcVbNm1234567890QWERTYUIOPASDFGHJKLZXCVBNM
 
 # Build the project
 RUN ./mvnw clean package -DskipTests
