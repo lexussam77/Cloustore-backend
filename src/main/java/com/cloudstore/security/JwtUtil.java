@@ -9,13 +9,19 @@ import java.security.Key;
 import java.util.Date;
 import java.util.Map;
 
+
 @Component
 public class JwtUtil {
-    @Value("${jwt.secret}")
-    private String jwtSecret;
+    private final String jwtSecret;
+    private final long jwtExpirationMs;
 
-    @Value("${jwt.expiration}")
-    private long jwtExpirationMs;
+    public JwtUtil(
+        @Value("${jwt.secret}") String jwtSecret,
+        @Value("${jwt.expiration}") long jwtExpirationMs
+    ) {
+        this.jwtSecret = jwtSecret;
+        this.jwtExpirationMs = jwtExpirationMs;
+    }
 
     private Key getSigningKey() {
         return Keys.hmacShaKeyFor(jwtSecret.getBytes());
